@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ContactItem from './ContactItem/ContactItem';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/contactsSlice';
 
-const ContactList = ({ contacts, onClick }) => {
+const ContactList = ({ contacts }) => {
+  const dispatch = useDispatch();
+
   return (
     <section>
       <ul>
@@ -12,7 +16,7 @@ const ContactList = ({ contacts, onClick }) => {
             key={id}
             name={name}
             number={number}
-            onClick={() => onClick(id)}
+            onClick={() => dispatch(deleteContact(id))}
           />
         ))}
       </ul>
